@@ -7,26 +7,22 @@ class BankAccount:
     def deposit(self, amount):
         if amount > 0:
             self.__account_balance += amount
-            return f"Deposited ${amount}. New balance: ${self.__account_balance}"
+            print(f"Deposited ₹{amount}. New balance: ₹{self.__account_balance}")
         else:
-            return "Invalid deposit amount. Please enter a positive value."
+            print("Invalid deposit amount. Please enter a positive amount.")
 
     def withdraw(self, amount):
-        if amount > 0 and amount <= self.__account_balance:
+        if 0 < amount <= self.__account_balance:
             self.__account_balance -= amount
-            return f"Withdrew ${amount}. New balance: ${self.__account_balance}"
-        elif amount > self.__account_balance:
-            return "Insufficient funds. Withdrawal not allowed."
+            print(f"Withdrew ₹{amount}. New balance: ₹{self.__account_balance}")
         else:
-            return "Invalid withdrawal amount. Please enter a positive value."
+            print("Insufficient funds or invalid withdrawal amount.")
 
     def display_balance(self):
-        return f"Account balance for {self.__account_holder_name}: ${self.__account_balance}"
+        print(f"Account Balance for {self.__account_holder_name} (Account #{self.__account_number}): ₹{self.__account_balance}")
 
-
-my_account = BankAccount("35698","Nivetha",1000)
-print(my_account.display_balance())  
-print(my_account.deposit(500))       
-print(my_account.withdraw(200))    
-print(my_account.withdraw(1500))     
-print(my_account.display_balance())  
+account = BankAccount("9766490", "Nivetha", 1000.00)
+account.display_balance()
+account.deposit(600.00)
+account.withdraw(300.00)
+account.display_balance()
